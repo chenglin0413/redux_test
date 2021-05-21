@@ -7,7 +7,7 @@
 4. React Components
 
 
-### 求和Example_redux_精簡版
+### 1.求和Example_redux_精簡版
 1. src下建立
     -redux
         -store.js
@@ -27,12 +27,12 @@
     4. 在index.js中檢測store中狀態的改變，一旦發生改變，重新render<App/>。
        備註: redux只負責管理狀態，至於狀態的改變驅動頁面的展示，需要我們自己寫。
 
-### 求和Example_redux_完整版
+### 2.求和Example_redux_完整版
 新增文件:
 1. count_action.js :專用於創建action對象
 2. constant.js     :放置容易寫錯的type值 
 
-### 求和Example_redux_異步action版
+### 3.求和Example_redux_異步action版
 1. 明確: 延遲的動作不想交給組件自身，想交給action
 2. 何時需要異步action : 想要對狀態進行操作，但是具體的資料(數據)靠異步任務返回(非必要)。
 3. 具體編碼:
@@ -42,7 +42,7 @@
 4. 備註 : 異步action不是必需要寫的，完全可以自己等待異步任務的結果，再去分發同步action。
 
 
-### 求和Example_react-redux_基本使用
+### 4.求和Example_react-redux_基本使用
 1. 明確兩個概念:
     1. UI組件:不能使用任何redux的API，只負責頁面的呈現、交互等。
     2. 容器組件:負責和redux通信，將結果交給UI組件。
@@ -54,7 +54,7 @@
 4. 備註2 : mapStateToProps，也可以是一個對象。
 
 
-### 求和Example_react-redux優化
+### 5.求和Example_react-redux優化
 1. 容器組件與UI組件整合成一個文件
 2. 無須自己給APP組件傳遞store;給<App/>包裹一個<Provider store={store}>即可。
 3. 使用了react-redux後，也不用自己去監測redux中狀態的改變了，容器組件可以自行完成這件事。
@@ -67,3 +67,16 @@
             {key:xxxxxAction}  // 映射操作狀態的方法
         )(UI組件)
     3. 在UI組件中，通過this.props.xxxxx讀取和操作狀態
+
+
+### 6. 求和Example_react-redux數據共享版
+1. 定義一個Person組件，和Count組件通過redux數據共享
+2. 為Person組件編寫: reducer, action, 配置constant常量。
+3. 重點: Person的reducer和Count的reducer要使用"combineReducers"進行合併,合併後的總狀態是一個對象!
+4. 交給store的是總reducer,最後注意在組件中取出狀態的時候，記得"取到位"。
+
+### 7. 求和Example_react-redux開發者工具的使用
+1. npm install redux-devtools-extension
+2. 於store中進行配置
+3.  import{composeWithDevTools} from 'redux-devtools-extension'
+    const store =  createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))

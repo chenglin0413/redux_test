@@ -3,7 +3,7 @@
 專門為count組件建立action對象
 
 */
-import {INCREMENT,DECREMENT} from './constants'
+import {INCREMENT,DECREMENT} from '../constants'
 //同步action, action 的值為 Object 的一般對象
 export const  createIncrementAction = data=>({type:INCREMENT,data})
 export const  createDecrementAction = data=>({type:DECREMENT,data})
