@@ -80,3 +80,14 @@
 2. 於store中進行配置
 3.  import{composeWithDevTools} from 'redux-devtools-extension'
     const store =  createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))
+
+### 8. 求和Example_react-redux最終版
+1. 所有變量名字要規範，盡量觸發對象的簡寫形式。
+2. reducers文件中，編寫index.js專門用於彙總並暴露所有的reducer > combineReducers
+
+
+### 9. how to deploy app on tomcat ?
+0. set 【"homepage": "https://localhost:8080/build", 】in package.json file
+1. command : npm run build 
+2. copy and paste the 'build' content to webapps folder.
+3. https://localhost:8080/{build} > or any name yor need
